@@ -4,6 +4,8 @@ import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "devices")
@@ -25,7 +27,10 @@ public class Device
     @Column(name="start_connection")
     private Date startConnection;
 
-    public Device()
+    @OneToMany
+    private List<Location> locations = new ArrayList<>();
+
+    public Device(String connectionName, String deviceName, int historyDays, Date startConnection)
     {
         this.connectionName=connectionName;
         this.deviceName=deviceName;
@@ -76,5 +81,20 @@ public class Device
     public void setStartConnection(Date startConnection)
     {
         this.startConnection = startConnection;
+    }
+
+    public List<Location> getLocations()
+    {
+        return locations;
+    }
+
+    public void setLocations(List<Location> locations)
+    {
+        this.locations = locations;
+    }
+
+    public void addLocation(Location location)
+    {
+        this.locations.add(location);
     }
 }

@@ -3,6 +3,8 @@ package com.findme.myappbackend.models;
 import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="users")
@@ -17,6 +19,9 @@ public class User
 
     @Column(name="password")
     private String password;
+
+    @OneToMany
+    private List<Device> devices = new ArrayList<>();
 
     public User(String login, String password)
     {
@@ -49,4 +54,18 @@ public class User
         return password;
     }
 
+    public void addDevice(Device device)
+    {
+        this.devices.add(device);
+    }
+
+    public List<Device> getDevices()
+    {
+        return devices;
+    }
+
+    public void setDevices(List<Device> devices)
+    {
+        this.devices = devices;
+    }
 }
