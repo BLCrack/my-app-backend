@@ -23,7 +23,7 @@ public class Location
 
     @Column(name="time")
     private Time time;
-
+    
     public Location(String GPS_latitude, String GPS_longitude, Date date, Time time)
     {
         this.GPS_latitude=GPS_latitude;

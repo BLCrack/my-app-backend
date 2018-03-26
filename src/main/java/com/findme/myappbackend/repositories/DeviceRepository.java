@@ -4,7 +4,9 @@ import com.findme.myappbackend.models.Device;
 import com.findme.myappbackend.models.User;
 import org.springframework.data.repository.Repository;
 
+
 import java.util.List;
+import java.util.Set;
 
 public interface DeviceRepository extends Repository<Device, String>
 {
