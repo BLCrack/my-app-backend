@@ -27,8 +27,13 @@ public class Device
     @Column(name="start_connection")
     private Date startConnection;
 
+    @OneToOne
+    private Location actualLocation;
     @OneToMany
-    private List<Location> locations = new ArrayList<>();
+    private List<Location> historyLocations = new ArrayList<>();
+
+    @ManyToOne
+    private User owner;
 
     public Device(String connectionName, String deviceName, int historyDays, Date startConnection)
     {
@@ -83,18 +88,25 @@ public class Device
         this.startConnection = startConnection;
     }
 
-    public List<Location> getLocations()
+    public List<Location> getHistoryLocations()
     {
-        return locations;
+        return historyLocations;
     }
 
-    public void setLocations(List<Location> locations)
+    public void setHistoryLocations(List<Location> historyLocations)
     {
-        this.locations = locations;
+        this.historyLocations = historyLocations;
+        this.actualLocation = historyLocations.get(historyLocations.size()-1);
     }
 
-    public void addLocation(Location location)
+    public void addLocationToHistory(Location location)
     {
-        this.locations.add(location);
+        this.historyLocations.add(location);
+        this.actualLocation = historyLocations.get(historyLocations.size()-1);
+    }
+
+    public Location getActuallLocation()
+    {
+        return actualLocation;
     }
 }
