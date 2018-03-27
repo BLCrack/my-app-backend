@@ -1,7 +1,5 @@
 package com.findme.myappbackend.models;
 
-import org.springframework.data.annotation.Id;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
