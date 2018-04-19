@@ -1,110 +1,128 @@
 package com.findme.myappbackend.models;
 
-import javax.persistence.*;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "devices")
-public class Device
-{
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+public class Device {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
 
-    @Column(name="connection_name")
-    private String connectionName;
+	@Column(name = "connection_name")
+	private String connectionName;
 
-    @Column(name="device_name")
-    private String deviceName;
+	@Column(name = "device_name")
+	private String deviceName;
 
-    @Column(name="history_days0")
-    private int historyDays;
+	@Column(name = "history_days0")
+	private int historyDays;
 
-    @Column(name="start_connection")
-    private Date startConnection;
+	@Column(name = "start_connection")
+	private Date startConnection;
 
-    @OneToOne
-    private Location actualLocation;
-    @OneToMany
-    private List<Location> historyLocations = new ArrayList<>();
+	@OneToOne
+	private Location actualLocation;
+	@OneToMany
+	private List<Location> historyLocations = new ArrayList<>();
 
-    @ManyToOne
-    private User owner;
+	@ManyToOne
+	@JsonIgnoreProperties({ "devices" })
+	private User owner;
 
-    public Device(String connectionName, String deviceName, int historyDays, Date startConnection)
-    {
-        this.connectionName=connectionName;
-        this.deviceName=deviceName;
-        this.historyDays=historyDays;
-        this.startConnection=startConnection;
-    }
+	public Device() {
+		super();
+	}
 
-    public int getId()
-    {
-        return this.id;
-    }
+	public Location getActualLocation() {
+		return actualLocation;
+	}
 
-    public String getConnectionName()
-    {
-        return connectionName;
-    }
+	public void setActualLocation(Location actualLocation) {
+		this.actualLocation = actualLocation;
+	}
 
-    public void setConnectionName(String connectionName)
-    {
-        this.connectionName = connectionName;
-    }
+	public User getOwner() {
+		return owner;
+	}
 
-    public String getDeviceName()
-    {
-        return deviceName;
-    }
+	public void setOwner(User owner) {
+		this.owner = owner;
+	}
 
-    public void setDeviceName(String deviceName)
-    {
-        this.deviceName = deviceName;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public int getHistoryDays()
-    {
-        return historyDays;
-    }
+	public Device(String connectionName, String deviceName, int historyDays, Date startConnection) {
+		this.connectionName = connectionName;
+		this.deviceName = deviceName;
+		this.historyDays = historyDays;
+		this.startConnection = startConnection;
+	}
 
-    public void setHistoryDays(int historyDays)
-    {
-        this.historyDays = historyDays;
-    }
+	public int getId() {
+		return this.id;
+	}
 
-    public Date getStartConnection()
-    {
-        return startConnection;
-    }
+	public String getConnectionName() {
+		return connectionName;
+	}
 
-    public void setStartConnection(Date startConnection)
-    {
-        this.startConnection = startConnection;
-    }
+	public void setConnectionName(String connectionName) {
+		this.connectionName = connectionName;
+	}
 
-    public List<Location> getHistoryLocations()
-    {
-        return historyLocations;
-    }
+	public String getDeviceName() {
+		return deviceName;
+	}
 
-    public void setHistoryLocations(List<Location> historyLocations)
-    {
-        this.historyLocations = historyLocations;
-        this.actualLocation = historyLocations.get(historyLocations.size()-1);
-    }
+	public void setDeviceName(String deviceName) {
+		this.deviceName = deviceName;
+	}
 
-    public void addLocationToHistory(Location location)
-    {
-        this.historyLocations.add(location);
-        this.actualLocation = historyLocations.get(historyLocations.size()-1);
-    }
+	public int getHistoryDays() {
+		return historyDays;
+	}
 
-    public Location getActuallLocation()
-    {
-        return actualLocation;
-    }
+	public void setHistoryDays(int historyDays) {
+		this.historyDays = historyDays;
+	}
+
+	public Date getStartConnection() {
+		return startConnection;
+	}
+
+	public void setStartConnection(Date startConnection) {
+		this.startConnection = startConnection;
+	}
+
+	public List<Location> getHistoryLocations() {
+		return historyLocations;
+	}
+
+	public void setHistoryLocations(List<Location> historyLocations) {
+		this.historyLocations = historyLocations;
+		this.actualLocation = historyLocations.get(historyLocations.size() - 1);
+	}
+
+	public void addLocationToHistory(Location location) {
+		this.historyLocations.add(location);
+		this.actualLocation = historyLocations.get(historyLocations.size() - 1);
+	}
+
 }

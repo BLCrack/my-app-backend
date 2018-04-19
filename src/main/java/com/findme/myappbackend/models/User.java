@@ -1,69 +1,73 @@
 package com.findme.myappbackend.models;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 @Entity
-@Table(name="users")
-public class User
-{
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+@Table(name = "users")
+public class User {
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    @Column(name="login")
-    private String login;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
 
-    @Column(name="password")
-    private String password;
+	@Column(name = "login")
+	private String login;
 
-    @OneToMany
-    private List<Device> devices = new ArrayList<>();
+	@Column(name = "password")
+	private String password;
 
-    public User(String login, String password)
-    {
-        this.login=login;
-        this.password=password;
-    }
+	@OneToMany
+	private List<Device> devices = new ArrayList<>();
 
-    public void setLogin(String login)
-    {
-        this.login = login;
-    }
+	public User() {
+	}
 
-    public void setPassword(String password)
-    {
-        this.password = password;
-    }
+	public User(String login, String password) {
+		this.login = login;
+		this.password = password;
+	}
 
-    public int getId()
-    {
-        return id;
-    }
+	public void setLogin(String login) {
+		this.login = login;
+	}
 
-    public String getLogin()
-    {
-        return login;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public String getPassword()
-    {
-        return password;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public void addDevice(Device device)
-    {
-        this.devices.add(device);
-    }
+	public String getLogin() {
+		return login;
+	}
 
-    public List<Device> getDevices()
-    {
-        return devices;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public void setDevices(List<Device> devices)
-    {
-        this.devices = devices;
-    }
+	public void addDevice(Device device) {
+		this.devices.add(device);
+	}
+
+	public List<Device> getDevices() {
+		return devices;
+	}
+
+	public void setDevices(List<Device> devices) {
+		this.devices = devices;
+	}
 }

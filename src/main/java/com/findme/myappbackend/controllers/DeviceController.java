@@ -1,25 +1,25 @@
 package com.findme.myappbackend.controllers;
 
-import com.findme.myappbackend.models.Device;
-import com.findme.myappbackend.models.User;
-import com.findme.myappbackend.services.DeviceService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import com.findme.myappbackend.models.Device;
+import com.findme.myappbackend.models.User;
+import com.findme.myappbackend.services.DeviceService;
 
 @RestController
-public class DeviceController
-{
-    @Autowired
-    DeviceService deviceService;
+public class DeviceController {
+	@Autowired
+	DeviceService deviceService;
 
-    User user = new User("admin", "admin");
+	User user = new User("admin", "admin");
 
-    @GetMapping(value = "/devices")
-    public List<Device> showDevices()
-    {
-       return deviceService.findAllForUser(user);
-    }
+	@GetMapping(value = "/devices")
+	public List<Device> showDevices() {
+		user.setId(1);
+		return deviceService.findAllForUser(user);
+	}
 }
