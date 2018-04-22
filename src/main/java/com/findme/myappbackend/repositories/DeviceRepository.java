@@ -11,4 +11,8 @@ import java.util.Set;
 public interface DeviceRepository extends Repository<Device, String>
 {
     List<Device> findByOwner(User owner);
+
+    Device save(Device device);
+
+    void delete(Device device);
 }

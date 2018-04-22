@@ -15,7 +15,7 @@ import javax.persistence.Table;
 public class Location {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String id;
+	private int id;
 
 	@Column(name = "GPS_latitude")
 	private String GPS_latitude;
@@ -33,7 +33,7 @@ public class Location {
 		super();
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -44,7 +44,7 @@ public class Location {
 		this.time = time;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 

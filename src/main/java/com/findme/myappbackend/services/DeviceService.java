@@ -18,8 +18,16 @@ public class DeviceService {
 		this.deviceRepository = deviceRepository;
 	}
 
-	public List<Device> findAllForUser(User user) {
+	public List<Device> findAllForUser(User user)
+	{
 		List<Device> devices = deviceRepository.findByOwner(user);
 		return devices;
 	}
+
+	public Device addDeviceToDatabase(Device device)
+	{
+		return deviceRepository.save(device);
+	}
+
+	//usuwanie urządzenia
 }
