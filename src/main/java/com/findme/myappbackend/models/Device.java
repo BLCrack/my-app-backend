@@ -29,7 +29,7 @@ public class Device {
 	@Column(name = "device_name")
 	private String deviceName;
 
-	@Column(name = "history_days0")
+	@Column(name = "history_days")
 	private int historyDays;
 
 	@Column(name = "start_connection")
