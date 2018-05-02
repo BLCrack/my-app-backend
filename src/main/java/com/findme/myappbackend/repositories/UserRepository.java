@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface UserRepository extends Repository<User, String>
 {
+    List<User> findAll();
+
     User findByLogin(String login);
 
     User save(User user);
