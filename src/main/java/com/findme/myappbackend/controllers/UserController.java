@@ -10,18 +10,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/users")
+@CrossOrigin
 public class UserController
 {
     @Autowired
     UserService userService;
 
-    @GetMapping(value = "/users")
+    @GetMapping(value = "/all")
     public List<User> showUsers()
     {
         return userService.findAllUsers();
     }
 
-    @GetMapping(value = "/user/{login}")
+    @GetMapping(value = "/{login}")
     public User showUser(@PathVariable String login)
     {
         return userService.findUserByLogin(login);
@@ -33,7 +35,7 @@ public class UserController
         return userService.addUserToDatabase(user);
     }
 
-    @DeleteMapping(value = "/user/{login}")
+    @DeleteMapping(value = "/{login}")
     public void deleteUser(@PathVariable String login)
     {
         userService.deleteUserFromDatabase(login);

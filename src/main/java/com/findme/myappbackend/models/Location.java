@@ -13,10 +13,10 @@ public class Location {
 	private int id;
 
 	@Column(name = "GPS_latitude")
-	private String GPS_latitude;
+	private float GPS_latitude;
 
 	@Column(name = "GPS_longitude")
-	private String GPS_longitude;
+	private float GPS_longitude;
 
 	@Column(name = "date")
 	private Date date;
@@ -35,7 +35,7 @@ public class Location {
 		this.id = id;
 	}
 
-	public Location(String GPS_latitude, String GPS_longitude, Date date, Time time) {
+	public Location(float GPS_latitude, float GPS_longitude, Date date, Time time) {
 		this.GPS_latitude = GPS_latitude;
 		this.GPS_longitude = GPS_longitude;
 		this.date = date;
@@ -46,19 +46,19 @@ public class Location {
 		return id;
 	}
 
-	public String getGPS_latitude() {
+	public float getGPS_latitude() {
 		return GPS_latitude;
 	}
 
-	public void setGPS_latitude(String GPS_latitude) {
+	public void setGPS_latitude(float GPS_latitude) {
 		this.GPS_latitude = GPS_latitude;
 	}
 
-	public String getGPS_longitude() {
+	public float getGPS_longitude() {
 		return GPS_longitude;
 	}
 
-	public void setGPS_longitude(String GPS_longitude) {
+	public void setGPS_longitude(float GPS_longitude) {
 		this.GPS_longitude = GPS_longitude;
 	}
 
