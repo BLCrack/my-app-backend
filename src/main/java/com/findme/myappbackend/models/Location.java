@@ -12,11 +12,11 @@ public class Location {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
-	@Column(name = "GPS_latitude")
-	private float GPS_latitude;
+	@Column(name = "gpsLatitude")
+	private float gpsLatitude;
 
-	@Column(name = "GPS_longitude")
-	private float GPS_longitude;
+	@Column(name = "gpsLongitude")
+	private float gpsLongitude;
 
 	@Column(name = "date")
 	private Date date;
@@ -35,9 +35,9 @@ public class Location {
 		this.id = id;
 	}
 
-	public Location(float GPS_latitude, float GPS_longitude, Date date, Time time) {
-		this.GPS_latitude = GPS_latitude;
-		this.GPS_longitude = GPS_longitude;
+	public Location(float gpsLatitude, float gpsLongitude, Date date, Time time) {
+		this.gpsLatitude = gpsLatitude;
+		this.gpsLongitude = gpsLongitude;
 		this.date = date;
 		this.time = time;
 	}
@@ -46,20 +46,20 @@ public class Location {
 		return id;
 	}
 
-	public float getGPS_latitude() {
-		return GPS_latitude;
+	public float getGpsLatitude() {
+		return gpsLatitude;
 	}
 
-	public void setGPS_latitude(float GPS_latitude) {
-		this.GPS_latitude = GPS_latitude;
+	public void setGpsLatitude(float gpsLatitude) {
+		this.gpsLatitude = gpsLatitude;
 	}
 
-	public float getGPS_longitude() {
-		return GPS_longitude;
+	public float getGpsLongitude() {
+		return gpsLongitude;
 	}
 
-	public void setGPS_longitude(float GPS_longitude) {
-		this.GPS_longitude = GPS_longitude;
+	public void setGpsLongitude(float gpsLongitude) {
+		this.gpsLongitude = gpsLongitude;
 	}
 
 	public Date getDate() {
