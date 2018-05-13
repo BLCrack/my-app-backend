@@ -70,4 +70,13 @@ public class User {
 	public void setDevices(List<Device> devices) {
 		this.devices = devices;
 	}
+
+	@Override
+	public String toString() {
+		return "User{" +
+				"id=" + id +
+				", login='" + login + '\'' +
+				", password='" + password + '\'' +
+				'}';
+	}
 }

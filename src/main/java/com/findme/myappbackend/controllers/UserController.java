@@ -8,36 +8,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/users")
 @CrossOrigin
-public class UserController
-{
+public class UserController {
+
+    private Logger logger = Logger.getLogger(UserController.class.getCanonicalName());
+
     @Autowired
     UserService userService;
 
     @GetMapping(value = "/all")
-    public List<User> showUsers()
-    {
+    public List<User> showUsers() {
         return userService.findAllUsers();
     }
 
     @GetMapping(value = "/{login}")
-    public User showUser(@PathVariable String login)
-    {
+    public User showUser(@PathVariable String login) {
         return userService.findUserByLogin(login);
     }
 
     @PostMapping(value = "/newuser")
-    public User addUser(User user)
-    {
+    public User addUser(@RequestBody User user) {
+        logger.info("addUser : " + user);
         return userService.addUserToDatabase(user);
     }
 
     @DeleteMapping(value = "/{login}")
-    public void deleteUser(@PathVariable String login)
-    {
+    public void deleteUser(@PathVariable String login) {
         userService.deleteUserFromDatabase(login);
     }
 }
