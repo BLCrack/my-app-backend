@@ -24,7 +24,7 @@ public class Location {
 	@Column(name = "time")
 	private Time time;
 
-	@ManyToOne
+	@OneToOne
 	private Device device;
 
 	public Location() {

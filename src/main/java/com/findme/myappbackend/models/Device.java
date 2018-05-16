@@ -37,8 +37,6 @@ public class Device {
 
 	@OneToOne
 	private Location actualLocation;
-	@OneToMany
-	private List<Location> historyLocations = new ArrayList<>();
 
 	@ManyToOne
 	@JsonIgnoreProperties({ "devices" })
@@ -109,20 +107,6 @@ public class Device {
 
 	public void setStartConnection(Date startConnection) {
 		this.startConnection = startConnection;
-	}
-
-	public List<Location> getHistoryLocations() {
-		return historyLocations;
-	}
-
-	public void setHistoryLocations(List<Location> historyLocations) {
-		this.historyLocations = historyLocations;
-		this.actualLocation = historyLocations.get(historyLocations.size() - 1);
-	}
-
-	public void addLocationToHistory(Location location) {
-		this.historyLocations.add(location);
-		this.actualLocation = historyLocations.get(historyLocations.size() - 1);
 	}
 
 }
