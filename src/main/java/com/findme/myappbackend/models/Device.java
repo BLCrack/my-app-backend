@@ -23,14 +23,14 @@ public class Device {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
+	@Column(name = "phoneNumber")
+	private String phoneNumber;
+
 	@Column(name = "connection_name")
 	private String connectionName;
 
 	@Column(name = "device_name")
 	private String deviceName;
-
-	@Column(name = "history_days")
-	private int historyDays;
 
 	@Column(name = "start_connection")
 	private Date startConnection;
@@ -46,35 +46,29 @@ public class Device {
 		super();
 	}
 
-	public Location getActualLocation() {
-		return actualLocation;
-	}
-
-	public void setActualLocation(Location actualLocation) {
+	public Device(String phoneNumber, String connectionName, String deviceName, Date startConnection, Location actualLocation, User owner) {
+		this.phoneNumber = phoneNumber;
+		this.connectionName = connectionName;
+		this.deviceName = deviceName;
+		this.startConnection = startConnection;
 		this.actualLocation = actualLocation;
-	}
-
-	public User getOwner() {
-		return owner;
-	}
-
-	public void setOwner(User owner) {
 		this.owner = owner;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public Device(String connectionName, String deviceName, int historyDays, Date startConnection) {
-		this.connectionName = connectionName;
-		this.deviceName = deviceName;
-		this.historyDays = historyDays;
-		this.startConnection = startConnection;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
 
-	public int getId() {
-		return this.id;
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	public String getConnectionName() {
@@ -93,14 +87,6 @@ public class Device {
 		this.deviceName = deviceName;
 	}
 
-	public int getHistoryDays() {
-		return historyDays;
-	}
-
-	public void setHistoryDays(int historyDays) {
-		this.historyDays = historyDays;
-	}
-
 	public Date getStartConnection() {
 		return startConnection;
 	}
@@ -109,4 +95,19 @@ public class Device {
 		this.startConnection = startConnection;
 	}
 
+	public Location getActualLocation() {
+		return actualLocation;
+	}
+
+	public void setActualLocation(Location actualLocation) {
+		this.actualLocation = actualLocation;
+	}
+
+	public User getOwner() {
+		return owner;
+	}
+
+	public void setOwner(User owner) {
+		this.owner = owner;
+	}
 }
