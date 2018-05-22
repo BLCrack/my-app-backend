@@ -4,11 +4,11 @@ import com.findme.myappbackend.models.User;
 import com.findme.myappbackend.models.UserCredentials;
 import com.findme.myappbackend.security.TokenGenerator;
 import com.findme.myappbackend.services.UserService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.token.TokenService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -24,15 +24,13 @@ public class LoginController {
         this.tokenGenerator = tokenGenerator;
     }
 
-    @PostMapping
-    public String login(@RequestBody UserCredentials credentials) {
+    @PostMapping(produces = "application/json; charset=UTF-8")
+    public ResponseEntity<String> login(@RequestBody UserCredentials credentials) {
         User user = userService.findUserByLogin(credentials.getUsername());
         if (user != null && user.getPassword().equals(credentials.getPassword())) {
-            Authentication authentication = new UsernamePasswordAuthenticationToken(credentials.getUsername(),
-                    credentials.getPassword());
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-            return String.format("{ \"token\" : \"%s\" }", tokenGenerator.token(credentials));
+            String response = String.format("{ \"token\" : \"%s\" }", tokenGenerator.token(credentials));
+            return new ResponseEntity<>(response, HttpStatus.OK);
         }
-        return null;
+        return new ResponseEntity<>("{\"error\" : \"Authentication failed\" }", HttpStatus.FORBIDDEN);
     }
 }

@@ -20,6 +20,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @CrossOrigin
     @GetMapping(value = "/all")
     public List<User> showUsers()
     {
