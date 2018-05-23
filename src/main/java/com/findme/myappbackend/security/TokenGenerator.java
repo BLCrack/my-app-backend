@@ -11,8 +11,6 @@ import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
-import java.time.LocalDate;
-import java.util.Date;
 
 @Service
 public class TokenGenerator {
@@ -30,7 +28,7 @@ public class TokenGenerator {
         String token = null;
         try {
             token = JWT.create()
-                       .withClaim("user", credentials.getUsername())
+                       .withSubject(credentials.getUsername())
                        .sign(Algorithm.HMAC512(key));
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);
