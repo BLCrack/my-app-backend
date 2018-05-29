@@ -22,10 +22,16 @@ public class DeviceService {
 		this.userRepository = userRepository;
 	}
 
-	public List<Device> findAllForCurrentUser()
+	public List<Device> findAllDevicesForCurrentUser()
 	{
 		User user = userRepository.findByLogin(SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString());
 		List<Device> devices = deviceRepository.findByOwner(user);
+		return devices;
+	}
+
+	public List<Device> findAllDevices()
+	{
+		List<Device> devices = deviceRepository.findAll();
 		return devices;
 	}
 

@@ -12,6 +12,8 @@ public interface DeviceRepository extends Repository<Device, String>
 {
     List<Device> findByOwner(User owner);
 
+    List<Device> findAll();
+
     Device save(Device device);
 
     void delete(Device device);
