@@ -26,13 +26,13 @@ public class Device {
 	@Column(name = "phoneNumber")
 	private String phoneNumber;
 
-	@Column(name = "connection_name")
+	@Column(name = "connectionName")
 	private String connectionName;
 
-	@Column(name = "device_name")
+	@Column(name = "deviceName")
 	private String deviceName;
 
-	@Column(name = "start_connection")
+	@Column(name = "startConnection")
 	private Date startConnection;
 
 	@OneToOne
