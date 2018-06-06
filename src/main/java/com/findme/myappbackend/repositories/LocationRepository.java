@@ -7,5 +7,5 @@ public interface LocationRepository extends Repository<Location, String>
 {
     Location save(Location location);
 
-    void delete(Location location);
+    Location findById(int id);
 }

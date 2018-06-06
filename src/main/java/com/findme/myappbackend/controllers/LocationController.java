@@ -20,4 +20,11 @@ public class LocationController
         System.out.println("add location");
         return locationService.addLocationToDatabase(location);
     }
+
+    @PutMapping("/update/{id}")
+    public Location updateLocation(@PathVariable("id") int id, @RequestBody Location location)
+    {
+        System.out.println("update location");
+        return locationService.updateLocationInDatabase(id, location);
+    }
 }

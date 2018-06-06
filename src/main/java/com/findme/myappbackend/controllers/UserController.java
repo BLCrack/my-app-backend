@@ -30,6 +30,7 @@ public class UserController {
 
     @GetMapping(value = "/{login}")
     public User showUser(@PathVariable String login) {
+        System.out.println("showUserByLogin");
         return userService.findUserByLogin(login);
     }
 
