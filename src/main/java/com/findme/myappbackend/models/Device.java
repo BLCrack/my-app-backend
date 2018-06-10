@@ -27,7 +27,7 @@ public class Device {
 	@Column(name = "startConnection")
 	private Date startConnection;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	private Location actualLocation;
 
 	@ManyToOne
