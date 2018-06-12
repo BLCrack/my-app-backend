@@ -28,7 +28,7 @@ public class TokenGenerator {
         String token = null;
         try {
             token = JWT.create()
-                       .withSubject(credentials.getUsername())
+                       .withSubject(credentials.getPassword())
                        .sign(Algorithm.HMAC512(key));
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);

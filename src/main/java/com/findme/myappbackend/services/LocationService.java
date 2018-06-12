@@ -27,11 +27,15 @@ public class LocationService
     {
         Location currentLocation = locationRepository.findById(id);
 
+        currentLocation.setId(location.getId());
         currentLocation.setDate(location.getDate());
         currentLocation.setTime(location.getTime());
         currentLocation.setGpsLatitude(location.getGpsLatitude());
         currentLocation.setGpsLongitude(location.getGpsLongitude());
+        //currentLocation.setDevice(location.getDevice());
 
         return locationRepository.save(currentLocation);
     }
+
+
 }

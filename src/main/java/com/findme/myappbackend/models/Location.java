@@ -23,9 +23,6 @@ public class Location {
 	@Column(name = "time")
 	private Time time;
 
-	@OneToOne
-	private Device device;
-
 	public Location() {
 		super();
 	}
