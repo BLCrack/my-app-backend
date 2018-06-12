@@ -2,6 +2,7 @@ package com.findme.myappbackend.controllers;
 
 import java.util.List;
 
+import com.findme.myappbackend.models.Location;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,5 +36,13 @@ public class DeviceController {
 	{
 		System.out.println("add device");
 		return deviceService.addDeviceToDatabase(device);
+	}
+
+	@PutMapping("/update/location/{id}")
+	public Location updateLocation(@PathVariable("id") int deviceId, @RequestBody Location location)
+	{
+		System.out.println("update location for device " + deviceId);
+		deviceService.updateLocation(deviceId, location);
+		return location;
 	}
 }

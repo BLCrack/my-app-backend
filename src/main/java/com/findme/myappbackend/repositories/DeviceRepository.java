@@ -10,6 +10,8 @@ import java.util.Set;
 
 public interface DeviceRepository extends Repository<Device, String>
 {
+    Device findById(int id);
+
     List<Device> findByOwner(User owner);
 
     List<Device> findAll();
