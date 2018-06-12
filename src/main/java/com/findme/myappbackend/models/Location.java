@@ -9,7 +9,6 @@ import javax.persistence.*;
 @Table(name = "locations")
 public class Location {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
 	@Column(name = "gpsLatitude")
