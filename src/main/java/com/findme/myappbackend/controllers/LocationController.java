@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 public class LocationController
 {
-    @Autowired
     LocationService locationService;
 
     @PostMapping("/add")

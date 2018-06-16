@@ -23,7 +23,7 @@ public class LoginController {
 
     @PostMapping(produces = "application/json; charset=UTF-8")
     public ResponseEntity<String> login(@RequestBody UserCredentials credentials) {
-        User user = userService.findUserByLogin(credentials.getUsername());
+        User user = userService.findAllUsers().get(0);
         if (user != null && user.getPassword().equals(credentials.getPassword())) {
             String response = String.format("{ \"token\" : \"%s\" }", tokenGenerator.token(credentials));
             return new ResponseEntity<>(response, HttpStatus.OK);

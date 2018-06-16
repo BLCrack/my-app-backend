@@ -25,7 +25,7 @@ public class User {
 	@Column(name = "login")
 	private String login;
 
-	@Column(name = "password")
+	@Column(name = "passwords")
 	private String password;
 
 	@OneToMany
